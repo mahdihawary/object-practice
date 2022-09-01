@@ -32,16 +32,35 @@ function listener(){
 
 }
 
+ 
+function createBookCard(tit, auth, pageNum, finished){
+
+        console.log(e)
+        let book=document.createElement('div')
+        book.classList.add('book')
+        let author=document.createElement('p')
+        author.classList.add('author')
+        author.innerText=auth
+        let title = document.createElement('p')
+        title.classList.add('title')
+        title.innerText=tit
+        let pages =document.createElement('p')
+        pages.classList.add('pages')
+        pages.innerText=pageNum
+        let read = document.createElement('p')
+        read.classList.add('read')
+        read.innertext= finished
+        book.append(author)
+        book.append(title)
+        book.append(pages)
+        book.append(read)
+        return book
+}
 
 function displayLibrary(){
     myLibrary.forEach(e=>{
 
-        console.log(e)
-        document.createElement()
     })
-}
-
-function createBookCard(){
 
 }
 
