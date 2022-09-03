@@ -59,6 +59,7 @@ function createBookCard(tit, auth, pageNum, finished){
 
 function displayLibrary(){
     myLibrary.forEach(e=>{
+        createBookCard(e.title, e.author,e.pages, e.read)
 
     })
 
