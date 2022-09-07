@@ -35,7 +35,6 @@ function listener(){
  
 function createBookCard(tit, auth, pageNum, finished){
 
-        console.log(e)
         let book=document.createElement('div')
         book.classList.add('book')
         let author=document.createElement('p')
@@ -54,6 +53,7 @@ function createBookCard(tit, auth, pageNum, finished){
         book.append(title)
         book.append(pages)
         book.append(read)
+        console.log(book)
         return book
 }
 
@@ -80,4 +80,5 @@ console.log(bookForm)
 
 const theHobbit=new Book('The Hobbit', 'Tolkien', '259', false)
 listener()
+createBookCard('Hobbit', 'Tolkien', '333', 'Complete')
 
