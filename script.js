@@ -1,4 +1,14 @@
-let myLibrary=[]
+const bookShelf=document.querySelector('.library')
+const form=document.querySelector('.form-container')
+const add=document.querySelector('.add-book')
+
+
+
+
+let myLibrary=[{title: "Harry Potter and the goblet of Fire",
+    author: "J. k. Rowling",
+    pages: 650,
+    read: "Read"}]
 
 function Book(title,author,pages,read){
 
@@ -7,8 +17,9 @@ function Book(title,author,pages,read){
     this.pages=pages
     this.read=read
 }
+
 Book.prototype.info=function(){
-let completed='read.'
+let completed='read'
         if (!this.read)
             completed='not read yet.'
 
@@ -32,29 +43,43 @@ function listener(){
 
 }
 
- 
-function createBookCard(tit, auth, pageNum, finished){
+function formListener(){
+    add.addEventListener('click',e=>{
+        e.preventDefault()
+        console.log(form)
+        form.innerHTML=`
+         <form class="book-form">
+                <label>Title</label>
+                <input class="title">
+                <label>Author</label>
+                <input class="author">
+                <label>Pages</label>
+                <input class="pages" type="number">
+                <label>Finished reading</label>
+                <input type="checkbox" class="read">
+                <input type="checkbox">
+                <button type="submit" class="submit">Submit</button>
+        </form>
+        `;
 
-        let book=document.createElement('div')
-        book.classList.add('book')
-        let author=document.createElement('p')
-        author.classList.add('author')
-        author.innerText=auth
-        let title = document.createElement('p')
-        title.classList.add('title')
-        title.innerText=tit
-        let pages =document.createElement('p')
-        pages.classList.add('pages')
-        pages.innerText=pageNum
-        let read = document.createElement('p')
-        read.classList.add('read')
-        read.innertext= finished
-        book.append(author)
-        book.append(title)
-        book.append(pages)
-        book.append(read)
-        console.log(book)
-        return book
+    })
+}
+
+ 
+function displayBookCard(bookIndex){
+
+        const book = myLibrary[bookIndex]
+        const bookCard= document.createElement('div')
+        bookCard.classList.add('book')
+        bookCard.innerHTML=`
+        <div id=${bookIndex}>Title: ${book.title}</div>
+        <div>Author: ${book.author}</div>
+        <div>Pages: ${book.pages}</div>
+        <div>${book.read}</div>
+        `
+        bookShelf.appendChild(bookCard)
+
+
 }
 
 function displayLibrary(){
@@ -79,6 +104,6 @@ function getInput(){
 console.log(bookForm)
 
 const theHobbit=new Book('The Hobbit', 'Tolkien', '259', false)
-listener()
-createBookCard('Hobbit', 'Tolkien', '333', 'Complete')
+formListener()
+displayBookCard(0)
 
